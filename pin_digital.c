@@ -31,9 +31,9 @@ void pinMode(uint8_t pin, uint8_t mode)
 
     if (mode == INPUT) {
         //Need to find how to disable the pullup
-        gpio_output_set(0, 0, 0, GPIO_ID_PIN(0));
+        gpio_output_set(0, 0, 0, GPIO_ID_PIN(pin));
     } else if (mode == INPUT_PULLUP) {
-        gpio_output_set(0, 0, 0, GPIO_ID_PIN(0));
+        gpio_output_set(0, 0, 0, GPIO_ID_PIN(pin));
     }
 }
 
@@ -46,7 +46,7 @@ void digitalWrite(uint8_t pin, uint8_t val)
     if (port == NOT_A_PIN) return;
 
     if (val == LOW)
-        gpio_output_set(0, BIT2, BIT2, 0);
+        PIN_OUT_CLEAR = 1 << pin
     else
-        gpio_output_set(BIT2, 0, BIT2, 0);
+        PIN_OUT_SET = 1 << pin 
 }
